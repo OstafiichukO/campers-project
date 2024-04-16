@@ -1,112 +1,66 @@
-# React homework template
+# Camper Rental Application
 
-Цей проект був створений за допомогою
-[Create React App](https://github.com/facebook/create-react-app). Для знайомства
-і налаштування додаткових можливостей
-[звернися до документації](https://facebook.github.io/create-react-app/docs/getting-started).
+This application is designed for a company offering camper rental services in Ukraine. It consists of three main pages:
 
-## Створення репозиторію за шаблоном
+1. **Home Page:** Provides a general overview of the services offered by the company. Styling and layout are at your discretion.
+2. **Catalog Page:** Displays a catalog of campers with different configurations that users can filter by location, equipment, and type.
+3. **Favorites Page:** Shows advertisements added by the user to their favorites.
+4. **Advert details:** Modal that shows advertisements details be ID
 
-Використовуй цей репозиторій організації GoIT як шаблон для створення репозиторію
-свого проєкта. Для цього натисни на кнопку `«Use this template»` і вибери опцію
-`«Create a new repository»`, як показано на зображенні.
+## Technical Specifications
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+Based on the provided layout, implement the following features:
 
-На наступному кроці відкриється сторінка створення нового репозиторію. Заповни поле
-його імені, переконайся що репозиторій публічний, після чого натисни кнопку
-`«Create repository from template»`.
+- **Advertisement Card:** Implement a card layout for displaying camper rental advertisements.
+- **Pagination:** Display 4 advertisements on the first page of the catalog, and load more on click of the "Load more" button.
+- **Favorites:** Allow users to add advertisements to their favorites list by clicking on a heart-shaped button. The button's color should change accordingly.
+- **Persistence:** Ensure that the user's actions (e.g., adding/removing advertisements from favorites) persist even after page refresh.
+- **Modal Window:** Display a modal window with detailed information about a camper advertisement when the "Show more" button is clicked. The modal should close when the close button ("x"), backdrop, or the "Esc" key is pressed.
+- **Form:** Include a form in the modal window for booking a camper. The form should have fields for name, email, booking date, and comment. Name, email, and booking date fields are mandatory and should be validated before submission.
+- **Price Format:** Display the rental price as a single value (e.g., 8000) and format it with commas (e.g., 8,000) in the UI.
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+## Backend
 
-Після того як репозиторій буде створено, необхідно перейти в налаштування
-створеного репозиторію на вкладку `Settings` > `Actions` > `General` як
-показано на зображенні.
+Set up a personal backend using the UI service [MockAPI](https://mockapi.io/). Create a resource named `adverts` with the following fields:
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+- `_id`
+- `name`
+- `price`
+- `rating`
+- `location`
+- `adults`
+- `children`
+- `engine`
+- `transmission`
+- `form`
+- `length`
+- `width`
+- `height`
+- `tank`
+- `consumption`
+- `description`
+- `details`
 
-Проскроливши сторінку до самого кінця, у секції `«Workflow permissions»` вибери
-опцію `«Read and write permissions»` і постав галочку в чекбоксі. Це
-необхідно для автоматизації процесу деплою проєкту.
+Ensure that the backend contains at least 13 advertisements with different values. [My MockAPI](https://65f75aa5b4f842e80885875b.mockapi.io/api/vehicles)
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+## Routing with React Router
 
-Тепер у тебе є особистий репозиторій проекту, зі структурою файлів і папок
-репозиторію-шаблону. Далі працюй із ним як із будь-яким іншим особистим репозиторієм,
-клонуй його собі на комп'ютер, пиши код, роби комміти і відправляй їх на
-GitHub.
+Implement routing using React Router with the following routes:
 
-## Підготовка до роботи
+- `/`: Home page with a general description of the company's services.
+- `/catalog`: Catalog page displaying campers of various configurations.
+- `/favorites`: Favorites page showing advertisements added by the user.
 
-1. Переконайся що на комп'ютері встановлено LTS-версія Node.js.
-   [Завантаж і встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови базові залежності проєкту командою `npm install`.
-3. Запусти режим розробки, виконавши команду `npm start`.
-4. Перейди в браузері за адресою [http://localhost:3000](http://localhost:3000).
-   Ця сторінка буде автоматично перезавантажуватися після збереження змін у файлах проєкту.
+Redirect users to the home page if they navigate to a non-existent route.
 
-## Деплой
+## Additional Task: Filtering
 
-Продакшн версія проєкту буде автоматично проходити лінтинг, збиратися і
-деплоїтися на GitHub Pages, у гілку `gh-pages`, щоразу, коли оновлюється
-гілка `main`. Наприклад, після прямого пушу або прийнятого пул-реквесту. Для цього
-необхідно у файлі `package.json` відредагувати поле `homepage`, замінивши
-`your_username` і `your_repo_name` на свої, і відправити зміни на GitHub.
+Add filtering functionality with the following options:
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
+- **Text Input:** Filter advertisements based on the location entered by the user.
+- **Checkboxes:** Filter advertisements based on selected equipment.
+- **Radio Buttons:** Filter advertisements based on selected camper types.
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) і
-виставити роздачу продакшн-версії файлів із папки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+## Conclusion
 
-![GitHub Pages settings](./assets/repo-settings.png)
-
-### Статус деплоя
-
-Статус деплою крайнього коміту відображається іконкою біля його ідентифікатора.
-
-- **Жовтий колір** - виконується збірка і деплой проєкту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, сборки або деплою сталася помилка.
-
-Детальнішу інформацію про статус можна подивитися, клікнувши на іконку, і
-у вікні, що випадає, перейти за посиланням `Details`.
-
-![Deployment status](./assets/deploy-status.png)
-
-### Жива сторінка
-
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися
-за адресою, вказаною у відредагованій властивості `homepage`. Наприклад, ось
-посилання на живу версію для цього репозиторію
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
-
-Якщо відкривається порожня сторінка, переконайся, що у вкладці `Console` немає помилок
-пов'язаних із неправильними шляхами до CSS і JS файлів проєкту (**404**). Швидше 
-за все у тебе неправильне значення властивості `homepage` у файлі `package.json`.
-
-### Маршрутизація
-
-Якщо додаток використовує бібліотеку `react-router-dom` для маршрутизації,
-необхідно додатково налаштувати компонент `<BrowserRouter>`, передавши у пропе
-`basename` точну назву твого репозиторію. Слеш на початку рядка обов'язковий.
-
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
-
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пушу в гілку `main` GitHub-репозиторія, запускається спеціальний
-   скрипт (GitHub Action) з файла `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проект ініціалізується і
-   проходить лінтинг і збірку перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн-версія файлів проєкту
-   відправляється в гілку `gh-pages`. В іншому випадку, в лозі виконання
-   скрипта буде вказано в чому проблема.
+This application aims to provide users with a seamless experience in browsing and booking campers for rent. Implementing the specified features and ensuring a user-friendly interface will enhance the overall user satisfaction and engagement. [FIGMA](https://www.figma.com/file/fnMWH0eBB7NnoqdAiiKWsQ/Test?type=design&node-id=25-12952&mode=design&t=k6q9YC4Rqs0Ln3aY-0)
