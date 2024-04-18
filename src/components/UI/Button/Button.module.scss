@@ -1,0 +1,35 @@
+.btn-search,
+.btn-reset,
+.btn-loadmore,
+.btn-submit {
+  padding: 16px 40px;
+  width: fit-content;
+  background-color: var(--accent-color);
+  color: var(--white-color);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 200px;
+  border: none;
+}
+.btn-reset {
+  border: 1px solid rgba(16, 24, 40, 0.1254901961);
+  background-color: var(--container-light-bg);
+  color: var(--primary-text-color);
+}
+
+.box-details {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 18px;
+  background-color: var(--container-bg-light);
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 500;
+  border-radius: 20px;
+
+  & p {
+    display: flex;
+    gap: 4px;
+  }
+}

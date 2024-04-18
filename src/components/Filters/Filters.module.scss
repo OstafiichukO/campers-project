@@ -1,0 +1,30 @@
+.filter-container {
+  margin-top: 135px;
+  @media (1440px<=width) {
+    position: fixed;
+    left: 64px;
+    width: 30%;
+    top: 135px;
+    margin-top: 0;
+    max-height: 80vh;
+    overflow-y: scroll;
+    padding-right: 50px;
+  }
+}
+
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.heading {
+  font-weight: 500px;
+  font-size: 16px;
+  color: var(--secondary-text-color);
+}
+.btns-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
