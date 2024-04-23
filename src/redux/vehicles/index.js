@@ -1,20 +1,21 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { LIMIT } from "assets/constants";
 
 export const vehiclesApi = createApi({
-  reducerPath: 'vehiclesApi',
+  reducerPath: "vehiclesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://65f75aa5b4f842e80885875b.mockapi.io/api',
+    baseUrl: "https://65f75aa5b4f842e80885875b.mockapi.io/api",
   }),
 
-  endpoints: builder => ({
+  endpoints: (builder) => ({
     getVehicles: builder.query({
       query: () => {
         return '/vehicles';
       },
-      transformResponse: response => {
+      transformResponse: (response) => {
         let params = new URLSearchParams(document.location.search);
-        const page = Number(params.get('page') || 1);
-        const limit = Number(params.get('limit') || 10);
+        const page = Number(params.get("page") || 1);
+        const limit = Number(params.get("limit") || LIMIT);
 
         const filters = {};
         for (const [key, value] of params.entries()) {
@@ -25,12 +26,10 @@ export const vehiclesApi = createApi({
 
         const filteredResults = response.filter(vehicle => {
           return Object.entries(filters).every(([key, value]) => {
-            if (
-              key === 'TV' ||
-              key === 'airConditioner' ||
-              key === 'bathroom' ||
-              key === 'kitchen'
-            ) {
+            if (key === "TV" ||
+              key === "airConditioner" ||
+              key === "bathroom" ||
+              key === "kitchen") {
               return vehicle.details[key] === parseInt(value);
             }
             return vehicle[key] === value;
@@ -46,14 +45,17 @@ export const vehiclesApi = createApi({
 
         return {
           vehicles: paginatedResults,
-          total: totalResults,
+          total: totalResults
         };
-      },
+      }
     }),
     getVehicleById: builder.query({
-      query: id => `/vehicles/${id}`,
+      query: (id) => `/vehicles/${id}`,
     }),
   }),
 });
 
-export const { useGetVehiclesQuery, useGetVehicleByIdQuery } = vehiclesApi;
+export const {
+  useGetVehiclesQuery,
+  useGetVehicleByIdQuery,
+} = vehiclesApi;

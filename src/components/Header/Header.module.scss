@@ -1,0 +1,45 @@
+.header {
+  position: fixed;
+  z-index: 9999;
+  display: block;
+  width: 100%;
+  background-color: white;
+  padding: 28px 0;
+  height: 75px;
+  border: 1px solid rgba(16, 24, 40, 0.1254901961);
+  margin-bottom: 64px;
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-wrapper .logo {
+  position: absolute;
+  top: 13px;
+}
+.nav {
+  display: flex;
+  gap: 40px;
+  margin-left: auto;
+}
+
+.link {
+  position: relative;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  padding-bottom: 24px;
+
+  &.active::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    height: 5px;
+    width: 100%;
+    display: block;
+    background-color: var(--accent-color);
+    border-radius: 4px;
+  }
+}

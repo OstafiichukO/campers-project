@@ -1,11 +1,11 @@
-import cl from './Button.module.scss';
+import cl from "./Button.module.scss";
 
 const Button = function ({ tag, type, className, children, onClick }) {
   switch (tag) {
-    case 'li':
+    case "li":
       return <li className={cl[className]}>{children}</li>;
 
-    case 'button':
+    case "button":
       return (
         <button type={type} className={cl[className]} onClick={onClick}>
           {children}

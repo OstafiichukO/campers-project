@@ -1,1 +1,1 @@
-export { default } from './LocationFilter';
+export {default} from './LocationFilter'

@@ -1,22 +1,22 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useStateContext } from 'context/StateContext';
-import LocationFilter from './LocationFilter';
-import EquipmentFilter from './EquipmentFilter';
-import VenicleType from './VenicleType';
-import Button from 'components/UI/Button/Button';
-
-import cl from './Filters.module.scss';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useStateContext } from "context/StateContext";
+import LocationFilter from "./LocationFilter";
+import EquipmentFilter from "./EquipmentFilter";
+import VenicleType from "./VenicleType";
+import Button from "components/UI/Button/Button";
+import { LIMIT } from "assets/constants";
+import cl from "./Filters.module.scss";
 
 const INITIAL_FILTERS = {
-  location: '',
-  transmission: '',
-  airConditioner: '',
-  form: '',
-  bathroom: '',
-  kitchen: '',
-  TV: '',
-  limit: 10,
+  location: "",
+  transmission: "",
+  airConditioner: "",
+  form: "",
+  bathroom: "",
+  kitchen: "",
+  TV: "",
+  limit: LIMIT,
   page: 1,
 };
 
@@ -30,18 +30,19 @@ const Filters = function () {
   useEffect(() => {
     const updatedFilters = {};
 
-    Object.keys(selectedFilters).forEach(key => {
+    Object.keys(selectedFilters).forEach((key) => {
       const valueFromParams = searchParams.get(key);
       updatedFilters[key] = valueFromParams || selectedFilters[key];
     });
 
     setSelectedFilters(updatedFilters);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
 
   const handleFilterChange = (filterKey, value, isChecked) => {
-    setSelectedFilters(prevFilters => ({
+    setSelectedFilters((prevFilters) => ({
       ...prevFilters,
-      [filterKey]: isChecked ? value : '',
+      [filterKey]: isChecked ? value : "",
     }));
   };
 
@@ -54,36 +55,36 @@ const Filters = function () {
       }
     });
 
-    searchParams['page'] = 1;
+    searchParams["page"] = 1;
     setSearchParams(searchParams);
   };
 
-  const onChange = target => {
-    let filterKey = '';
+  const onChange = (target) => {
+    let filterKey = "";
 
-    if (target.name === 'location') {
-      filterKey = 'location';
-    } else if (target.value === 'automatic') {
-      filterKey = 'transmission';
+    if (target.name === "location") {
+      filterKey = "location";
+    } else if (target.value === "automatic") {
+      filterKey = "transmission";
     } else {
-      filterKey = target?.dataset?.equipment ? target.name : 'form';
+      filterKey = target?.dataset?.equipment ? target.name : "form";
     }
 
     handleFilterChange(filterKey, target.value, target.checked);
   };
 
   const handleReset = () => {
-    setSelectedFilters(prevFilters => ({
+    setSelectedFilters((prevFilters) => ({
       ...prevFilters,
       ...INITIAL_FILTERS,
     }));
-    navigate('/catalog');
+    navigate("/catalog");
   };
   return (
-    <div className={cl['filter-container']}>
+    <div className={cl["filter-container"]}>
       <LocationFilter onChange={onChange} selectedFilters={selectedFilters} />
 
-      <div className={cl['filters-wrapper']}>
+      <div className={cl["filters-wrapper"]}>
         <h4 className={cl.heading}>Filters</h4>
         <EquipmentFilter
           onChange={onChange}
@@ -92,7 +93,7 @@ const Filters = function () {
         <VenicleType onChange={onChange} selectedFilters={selectedFilters} />
       </div>
 
-      <div className={cl['btns-wrapper']}>
+      <div className={cl["btns-wrapper"]}>
         <Button
           className="btn-search"
           type="button"

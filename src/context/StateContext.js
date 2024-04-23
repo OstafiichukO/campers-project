@@ -1,5 +1,5 @@
-import React, { createContext, useContext } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React, { createContext, useContext } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const Context = createContext();
 

@@ -1,7 +1,6 @@
+import { lazy } from "react";
 import { Route, Routes } from "react-router";
 import { useLocation } from "react-router-dom";
-import { lazy } from "react";
-
 import Layout from "layout/Layout";
 import ModalContent from "./ModalContent";
 
@@ -14,7 +13,12 @@ export const App = () => {
 
   const location = useLocation();
 
-  if (location.pathname.includes("/catalog/vehicle") || location.pathname.includes("/favorites/vehicle")) document.body.classList.add("lock");
+  if (
+    location.pathname.includes("/catalog/vehicle") ||
+    location.pathname.includes("/favorites/vehicle")
+  ) {
+    document.body.classList.add("lock");
+  }
 
   return (
     <Routes>

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToFavorites,
@@ -7,14 +7,14 @@ import {
 import Button from "components/UI/Button/Button";
 import Icon from "components/UI/Icon";
 import useScreenSize from "assets/hooks/useScreenSize";
-import cl from "./FavoriteCard.module.scss";
+import cl from "./VehicleCard.module.scss";
 
-const FavoriteCard = ({ vehicle }) => {
+const VehicleCard = ({ vehicle }) => {
   const {
     _id,
     name,
     price,
-    location,
+    location: vehicle_location,
     description,
     details,
     rating,
@@ -26,7 +26,7 @@ const FavoriteCard = ({ vehicle }) => {
   const isProductInFavorites = favorites.some((v) => v._id === _id);
 
   const dispatch = useDispatch();
-
+  const location = useLocation();
   const handleFavoriteToggle = () => {
     if (!isProductInFavorites) {
       dispatch(addToFavorites(vehicle));
@@ -64,7 +64,7 @@ const FavoriteCard = ({ vehicle }) => {
           <div className={cl["info-wrapper-top"]}>
             <h3 className={cl.name}>{name}</h3>
             <div className={cl.wrapper}>
-              <p className={cl.price}>€{price}</p>
+              <p className={cl.price}>€{price.toFixed(2)}</p>
               <button className={cl["fav-btn"]} onClick={handleFavoriteToggle}>
                 <Icon id={isProductInFavorites ? "heart-active" : "heart"} />
               </button>
@@ -73,7 +73,7 @@ const FavoriteCard = ({ vehicle }) => {
           <div className={cl["info-wrapper"]}>
             <p className={cl.rating}>
               <Icon id="rating" />
-              <Link to={`vehicle/${_id}/reviews`}>
+              <Link to={`vehicle/${_id}/reviews`} state={{ from: location }}>
                 <span>{rating}</span>
                 <span className={cl["reviews-number"]}>
                   ({reviews.length}
@@ -83,13 +83,20 @@ const FavoriteCard = ({ vehicle }) => {
             </p>
             <p className={cl.location}>
               <Icon id="location" />
-              <span>{location}</span>
+              <span>{vehicle_location}</span>
             </p>
           </div>
           <p className={cl.description}>{formatDescription()}</p>
         </div>
         <ul className={cl["details-list"]}>
-          {Object.entries(details).map(([key, value]) => {
+          {Object.entries(details).map(([key, value], index) => {
+            if (
+              (screenWidth < 768 && index >= 6) ||
+              (screenWidth >= 1440 && index >= 8)
+            ) {
+              return null;
+            }
+
             if (value && key !== "bathroom") {
               return (
                 <Button
@@ -110,11 +117,13 @@ const FavoriteCard = ({ vehicle }) => {
           })}
         </ul>
         <Button className="btn-loadmore" type="button" tag="button">
-          <Link to={`vehicle/${_id}/features`}>Show More</Link>
+          <Link to={`vehicle/${_id}/features`} state={{ from: location }}>
+            Show More
+          </Link>
         </Button>
       </div>
     </li>
   );
 };
 
-export default FavoriteCard;
+export default VehicleCard;

@@ -1,16 +1,18 @@
-import { Outlet } from 'react-router';
-import Filters from 'components/Filters';
-import VehiclesList from 'components/VehiclesList';
-import cl from './CatalogPage.module.scss';
+import { Outlet } from "react-router";
+import Filters from "components/Filters";
+import VehiclesList from "components/VehiclesList";
+import cl from "./CatalogPage.module.scss";
 
 const CatalogPage = function () {
   return (
-    <div className={cl['catalog-container']}>
-      <Filters />
-      <VehiclesList />
+    <section className={cl.section}>
+      <div className={cl["catalog-container"]}>
+        <Filters />
+        <VehiclesList />
 
-      <Outlet />
-    </div>
+        <Outlet />
+      </div>
+    </section>
   );
 };
 

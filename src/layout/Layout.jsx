@@ -1,8 +1,9 @@
-import { Outlet } from 'react-router-dom';
-import { Suspense } from 'react';
+import { Outlet } from "react-router-dom";
+import { Suspense } from "react";
 
-import Header from '../components/Header';
-import Container from '../components/UI/Container';
+import Header from "../components/Header";
+import Container from "../components/UI/Container";
+import Loader from "components/UI/Loader";
 
 const Layout = function () {
   return (
@@ -10,7 +11,7 @@ const Layout = function () {
       <Header />
       <main>
         <Container>
-          <Suspense fallback={<div>Loading content...</div>}>
+          <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
         </Container>

@@ -1,0 +1,12 @@
+.vehicles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media (1440px<=width) {
+    position: absolute;
+    right: 0;
+    width: 65%;
+    height: 70vh;
+  }
+}

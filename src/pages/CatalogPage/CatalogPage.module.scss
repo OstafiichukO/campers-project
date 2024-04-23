@@ -1,9 +1,14 @@
+.section {
+  @media (1440px<=width) {
+    padding-top: 135px;
+  }
+}
 .catalog-container {
-    display: flex;
-    flex-direction: column;
-    gap: 64px;
-    @media (1440px<=width) {
-        position: relative;
-        flex-direction: row;
-    }
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  @media (1440px<=width) {
+    position: relative;
+    flex-direction: row;
+  }
 }

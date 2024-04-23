@@ -1,18 +1,18 @@
-import { useField, useFormikContext } from 'formik';
-import { format } from 'date-fns';
+import { useField, useFormikContext } from "formik";
+import { format } from "date-fns";
 
 const DatePicker = ({ label, className, ...props }) => {
   const { setFieldValue } = useFormikContext();
   const [field] = useField(props);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const { value } = event.target;
     setFieldValue(field.name, value);
   };
 
   const formattedValue = field.value
-    ? format(new Date(field.value), 'yyyy-MM-dd')
-    : '';
+    ? format(new Date(field.value), "yyyy-MM-dd")
+    : "";
 
   return (
     <input

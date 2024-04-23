@@ -1,1 +1,1 @@
-export { default } from './VenicleType';
+export {default} from './VenicleType'

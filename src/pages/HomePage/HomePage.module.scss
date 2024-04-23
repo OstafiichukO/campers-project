@@ -1,0 +1,36 @@
+.section {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  padding-top: 135px;
+  background-image: url("../../../public/bg.jpg");
+  background-position: center;
+  background-color: var(--primary-text-color);
+  overflow: hidden;
+}
+.content-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.title {
+  position: absolute;
+  left: 20px;
+  font-size: 80px;
+  font-weight: 600px;
+  color: var(--accent-color);
+  width: 50%;
+
+  @media (768px<=width) {
+    font-size: 120px;
+    left: 32px;
+  }
+
+  @media (1440px<=width) {
+    font-size: 140px;
+    right: 64px;
+    margin-left: auto;
+  }
+}
