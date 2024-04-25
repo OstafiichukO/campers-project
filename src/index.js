@@ -12,7 +12,7 @@ import "./index.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="campers-project">
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <StateContext>
