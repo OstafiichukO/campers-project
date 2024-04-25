@@ -8,6 +8,8 @@
   background-image: url("../../../public/bg.jpg");
   background-position: center;
   background-color: var(--primary-text-color);
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow: hidden;
 }
 .content-wrapper {
@@ -20,7 +22,7 @@
   left: 20px;
   font-size: 80px;
   font-weight: 600px;
-  color: var(--accent-color);
+  color: var(--primary-text-color);
   width: 50%;
 
   @media (768px<=width) {
@@ -31,6 +33,5 @@
   @media (1440px<=width) {
     font-size: 140px;
     right: 64px;
-    margin-left: auto;
   }
 }
