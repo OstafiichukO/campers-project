@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkcampers_project=self.webpackChunkcampers_project||[]).push([[395],{5395:function(e,c,n){n.r(c),n.d(c,{default:function(){return o}});var s="HomePage_section__QO2n7",a="HomePage_content-wrapper__hFNFw",r="HomePage_title__ygULj",t=n(184),o=function(){return(0,t.jsx)("section",{className:s,children:(0,t.jsx)("div",{className:a,children:(0,t.jsx)("h1",{className:r,children:"Go camping now"})})})}}}]);
+//# sourceMappingURL=395.576e36e9.chunk.js.map
